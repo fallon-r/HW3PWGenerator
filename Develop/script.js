@@ -2,9 +2,29 @@ var generateBtn = document.querySelector("#generate");
 var passwordResult = "";
 // create array for loewrcase english chars
 var letters = "abcdefghijklmnopqrstuvwxyz";
+var special = ""
 var lowerCaseArray = letters.split("");
-var upperCaseArray = letters.toLocaleUpperCase("");
-var numOfChars;
+// var upperCaseArray = letters.toUpperCase.split("");
+// criteria entries
+var numOfChars = document.getElementById("pwLength").value;
+var numOfUpper = document.getElementById("pwUppercase").value;
+var numOfNumbers = document.getElementById("pwNumber").value;
+var numOfSpecial = document.getElementById("pwSpecial").value;
+
+// event listeners 
+document.getElementById('pwLength').addEventListener('input', function(x) {
+    console.log(this.value);
+});
+document.getElementById('pwUppercase').addEventListener('input', function(x) {
+    console.log(this.value);
+});
+document.getElementById('pwNumber').addEventListener('input', function(x) {
+    console.log(this.value);
+});
+document.getElementById('pwSpecial').addEventListener('input', function(x) {
+    console.log(this.value);
+});
+
 // generate password
 function generatePassword() {
     getPrompts();
@@ -12,18 +32,6 @@ function generatePassword() {
     return pass;
 }
 
-function getPrompts() {
-    // get prompts from user
-    // length 8 -128
-    numOfChars = prompt("how many characters do you want? Between 8 - 128");
-    if (numOfChars < 8) {
-        alert("Password must be  longer than 8 characters. Try again")
-    }
-    if (numOfChars > 128) {
-        alert("That's way too long. Try again")
-    }
-
-}
 
 function buildPassword() {
     // check for number and proper length of pass
