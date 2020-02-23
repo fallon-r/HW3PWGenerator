@@ -3,6 +3,7 @@ var passwordResult = "";
 // create array for loewrcase english chars
 var letters = "abcdefghijklmnopqrstuvwxyz";
 var lowerCaseArray = letters.split("");
+var upperCaseArray = letters.toLocaleUpperCase("");
 var numOfChars;
 // generate password
 function generatePassword() {
@@ -14,7 +15,14 @@ function generatePassword() {
 function getPrompts() {
     // get prompts from user
     // length 8 -128
-    numOfChars = prompt("how many charecters do you want?");
+    numOfChars = prompt("how many characters do you want? Between 8 - 128");
+    if (numOfChars < 8) {
+        alert("Password must be  longer than 8 characters. Try again")
+    }
+    if (numOfChars > 128) {
+        alert("That's way too long. Try again")
+    }
+
 }
 
 function buildPassword() {
