@@ -31,17 +31,17 @@
                         <label for="charNum">How long do you want your password? Between 8 and 128
                         characters</label></li>
                     <li>
-                        <input type="number" value="0" max="128" id="pwUppercase" name="Upper case" />
+                        <input type="number" value="0" min="0" max="128" id="pwUppercase" name="Upper case" />
                         <br>
                         <label for="Upper Case">How many uppercase characters would you like?</label>
                     </li>
                     <li>
-                        <input type="number" id="pwNumber" max="128" value="0" name="Numbers" />
+                        <input type="number" id="pwNumber" min="0" max="128" value="0" name="Numbers" />
                         <br>
                         <label for="Numbers">Do you want numbers in your password?</label>
                     </li>
                     <li>
-                        <input type="number" id="pwSpecial" max="128" value="0" name="Special" />
+                        <input type="number" id="pwSpecial" min="0" max="128" value="0" name="Special" />
                         <br>
                         <label for="Special">How many special characters would you like? (!@#$%^&*=-_)</label>
                     </li>

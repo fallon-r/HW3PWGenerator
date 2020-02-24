@@ -74,7 +74,7 @@ function checkLength() {
         userPS.disabled = true;
         document.querySelector("#generate").innerHTML = "Your Password is too short."
     }
-    if (userPL.value > 128 || userPN.value > 128 || userPS.value > 128 || userPU > 128) {
+    if (userPL.value > 128) {
         generateBtn.disabled = true;
         userPN.disabled = true;
         userPU.disabled = true;
@@ -90,47 +90,33 @@ function checkLength() {
     }
 };
 
-// If the number of specific characters is bigger than the length, buttons are disabled
 function numberDiscrepancy() {
-
-    if (userPN.value > userPL.value) {
+    if (parseInt(userPN.value) > parseInt(userPL.value)) {
         generateBtn.disabled = true;
         userPU.disabled = true;
         userPS.disabled = true;
         document.querySelector("#generate").innerHTML = "You have more numbers than characters!"
-    } else {
-        generateBtn.disabled = false;
-        userPN.disabled = false;
-        userPU.disabled = false;
-        userPS.disabled = false;
-        document.querySelector("#generate").innerHTML = "Generate Password"
-    };
-
-    if (userPU.value > userPL.value) {
+    }
+    if (parseInt(userPU.value) > parseInt(userPL.value)) {
         generateBtn.disabled = true;
         userPN.disabled = true;
         userPS.disabled = true;
-        document.querySelector("#generate").innerHTML = "You have more uppercase letters than characters!"
-    } else {
-        generateBtn.disabled = false;
-        userPN.disabled = false;
-        userPU.disabled = false;
-        userPS.disabled = false;
-        document.querySelector("#generate").innerHTML = "Generate Password"
-    };
-
-    if (userPS.value > userPL.value) {
+        document.querySelector("#generate").innerHTML = "You have more uppercase lettinputers than characters!"
+    }
+    if (parseInt(userPS.value) > parseInt(userPL.value)) {
         generateBtn.disabled = true;
         userPN.disabled = true;
         userPU.disabled = true;
         document.querySelector("#generate").innerHTML = "You have more special characters than characters!"
-    } else {
+    }
+    if (parseInt(userPL.value) >= parseInt(userPN.value) && parseInt(userPL.value) >= parseInt(userPU.value) && parseInt(userPL.value) >= parseInt(userPS.value)) {
         generateBtn.disabled = false;
         userPN.disabled = false;
         userPU.disabled = false;
         userPS.disabled = false;
         document.querySelector("#generate").innerHTML = "Generate Password"
-    };
+
+    }
 };
 
 
@@ -178,7 +164,7 @@ generateBtn.addEventListener("click", function() {
 document.getElementById("pwLength").addEventListener("input", checkLength);
 document.getElementById("pwNumber").addEventListener("input", numberDiscrepancy);
 document.getElementById("pwUppercase").addEventListener("input", numberDiscrepancy);
-document.getElementById("pwSpecial").addEventListener("inpu", numberDiscrepancy);
+document.getElementById("pwSpecial").addEventListener("input", numberDiscrepancy);
 // testing area
 
 // function passwordtest(l, characters) {
