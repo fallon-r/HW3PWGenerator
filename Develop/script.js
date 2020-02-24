@@ -1,6 +1,6 @@
 // character types
 var lChar = "abcdefghijklmnopqrstuvwxyz";
-var uChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// var uChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numChar = "1234567890";
 var spChar = "!@#$%^&*=-_";
 
@@ -18,71 +18,104 @@ var passwordResult = "";
 // Functions where the magic happens 
 
 
-function criteria(l, characters) {
-    var passwordResult = "";
-    for (var i = 0; i < l; i++) {
-        passwordResult += characters.charAt(Math.floor(Math.random() * characters.length))
-    }
+function criteria() {
+    // var passwordResult = "";
+    // var characters = [lChar, spChar, lChar.toUpperCase(), numChar];
+    // for (var i = 0; i < l; i++) {
+    //     passwordResult += characters.charAt(Math.floor(Math.random() * characters.length))
+    // };
     // check if there are numbers
-    if (userPN.value > 0) {
-        passwordResult += addCharFromArray(numChar).charAt(Math.floor(Math.random() * numChar.length)) * userPN.value;
-    };
-    if (userPS.value > 0) {
-        passwordResult += addCharFromArray(spChar).charAt(Math.floor(Math.random() * spChar.length)) * userPS.value;
-    };
-    if (userPU.value > 0) {
-        passwordResult += addCharFromArray(uChar).charAt(Math.floor(Math.random() * uChar.length)) * userPU.value;
-    };
+    // if (userPN.value > 0) {
+    //     passwordResult += addCharFromArray(numChar)
+    // };
+
+    // // check if ther are special characters
+    // if (userPS.value > 0) {
+    //     passwordResult += addCharFromArray(spChar)
+    // };
+
+    // // check if there are uppercase
+    // if (userPU.value > 0) {
+    //     passwordResult += addCharFromArray(lChar.toUpperCase())
+    // };
     return passwordResult;
-}
-
-
-
-function password(l, characters) {
-    var pwd = "";
-    for (var i = 0; i < l; i++) {
-        pwd += characters.charAt(Math.floor(Math.random() * characters.length));
-    };
-
-
-    return pwd;
 };
+
+function generatePassword() {
+    criteria();
+    var pass = buildPassword();
+    return pass;
+};
+
+
+
+// function password(l, characters) {
+//     var pwd = "";
+//     for (var i = 0; i < l; i++) {
+//         pwd += characters.charAt(Math.floor(Math.random() * characters.length));
+//     };
+//     if (userPU.value > 0) {
+//         {
+//             passwordResult += addCharFromArray(lchar.toUpperCase()).charAt(Math.floor(Math.random() * lChar.toUpperCase().length)) * userPU.value;
+//         };
+//     }
+
+
+//     return pwd;
+// };
 
 // Length checker.. If the length is too long or short, the generate button will be disabled. 
 
 function checkLength() {
     if (userPL.value < 8) {
         generateBtn.disabled = true;
+        userPN.disabled = true;
+        userPU.disabled = true;
+        userPS.disabled = true;
         document.querySelector("#generate").innerHTML = "Your Password is too short."
     }
     if (userPL.value > 128) {
         generateBtn.disabled = true;
+        userPN.disabled = true;
+        userPU.disabled = true;
+        userPS.disabled = true;
         document.querySelector("#generate").innerHTML = "Your Password is too long."
     }
     if (userPL.value >= 8 && userPL.value <= 128) {
         generateBtn.disabled = false;
+        userPN.disabled = false;
+        userPU.disabled = false;
+        userPS.disabled = false;
         document.querySelector("#generate").innerHTML = "Generate Password"
     }
 };
 
 
-// function buildPassword() {
-//     // check for number and proper length of pass
-//     if (userPL >= 8 && userPL <= 128) {
-//         for (var i = 0; i < userPL; i++) {
-//             // TO-DO: check for user password preference
-//             addCharFromArray(lowerCaseArray);
-//         }
-//     } else {
-//         alert("Your password is either too big or too small!")
-//     }
-//     return passwordResult;
-// };
+function buildPassword() {
+    // check for number and proper length of pass
+    if (userPL.value >= 8 && userPL.value <= 128) {
+        for (var i = 0; i < userPL.value; i++) {
+            // TO-DO: check for user password preference
+            addCharFromArray(lChar);
+        }
+        if (userPN.value > 0) {
+            for (var i = 0; i < userPN.value; i++) {
+                addCharFromArray(numChar);
+
+            }
+        }
+    };
+    return passwordResult;
+};
 
 // utility function for getting characters from array
 
 function addCharFromArray(arr) {
-    passwordResult += getRandomFromArray(lowerCaseArray);
+    passwordResult += getRandomFromArray(lChar);
+
+    // passwordResult += getRandomFromArray(spChar);
+    // passwordResult += getRandomFromArray(lChar.toUpperCase());
+
 }
 
 function getRandomFromArray(arr) {
@@ -92,12 +125,24 @@ function getRandomFromArray(arr) {
 // event listener main button
 
 generateBtn.addEventListener("click", function() {
-    var characters = lChar;
-
-    // if (userPU.value > 0) {
-    //     characters += uChar.charAt(Math.floor(Math.random() * uChar.length) * userPU.value);
-    // };
-
-    passwordText.value = password(userPL.value, characters);
+    var password = generatePassword();
+    // criteria(userPN.value, characters[numChar]);
+    // criteria(userPS.value, spChar);
+    // criteria(userPU.value, lChar.toUpperCase());
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+    passwordResult = "";
 });
 document.getElementById("pwLength").addEventListener("blur", checkLength);
+
+// testing area
+
+// function passwordtest(l, characters) {
+//     var pwdtest = "";
+//     for (var i = userPN.value; i < l; i++) {
+//         pwdtest += characters.charAt(Math.floor(Math.random() * characters.length));
+//     };
+//     return pwdtest;
+// };
+
+// console.log(passwordtest(12, lChar.toUpperCase()))
