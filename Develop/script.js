@@ -63,10 +63,17 @@ function password(l, characters) {
 // Length checker.. If the length is too long or short, the generate button will be disabled. 
 
 function checkLength() {
+    if (userPL.value < 8) {
+        generateBtn.disabled = true;
+        document.querySelector("#generate").innerHTML = "Your Password is too short."
+    }
+    if (userPL.value > 128) {
+        generateBtn.disabled = true;
+        document.querySelector("#generate").innerHTML = "Your Password is too long."
+    }
     if (userPL.value >= 8 && userPL.value <= 128) {
         generateBtn.disabled = false;
-    } else {
-        generateBtn.disabled = true;
+        document.querySelector("#generate").innerHTML = "Generate Password"
     }
 };
 
