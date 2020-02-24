@@ -29,6 +29,7 @@ function password(l, characters) {
 // event listeners
 
 generateBtn.addEventListener("click", function() {
-    var characters = lChar;
+    var characters = lChar
+
     passwordText.value = password(userPL.value, characters);
 })
