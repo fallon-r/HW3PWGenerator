@@ -19,22 +19,19 @@ var passwordResult = "";
 
 
 function criteria(l, characters) {
-    var passwordResult;
+    var passwordResult = "";
     for (var i = 0; i < l; i++) {
         passwordResult += characters.charAt(Math.floor(Math.random() * characters.length))
-    };
+    }
     // check if there are numbers
     if (userPN.value > 0) {
-        passwordResult += getRandomFromArray(numChar);
-    };
-    if (userPN.value > 0) {
-        pwd += getRandomFromArray(numChar);
+        passwordResult += addCharFromArray(numChar).charAt(Math.floor(Math.random() * numChar.length)) * userPN.value;
     };
     if (userPS.value > 0) {
-        pwd += getRandomFromArray(spChar);
+        passwordResult += addCharFromArray(spChar).charAt(Math.floor(Math.random() * spChar.length)) * userPS.value;
     };
     if (userPU.value > 0) {
-        pwd += getRandomFromArray(lChar.toUpperCase());
+        passwordResult += addCharFromArray(uChar).charAt(Math.floor(Math.random() * uChar.length)) * userPU.value;
     };
     return passwordResult;
 }
@@ -46,15 +43,6 @@ function password(l, characters) {
     for (var i = 0; i < l; i++) {
         pwd += characters.charAt(Math.floor(Math.random() * characters.length));
     };
-    // if (userPU.value < 1) {
-    //     alert("Your password is not strong enough.")
-    // };
-    // if (userPS.value < 1) {
-    //     alert("Your password is not strong enough.")
-    // };
-    // if (userPN.value < 1) {
-    //     alert("Your password is not strong enough.")
-    // };
 
 
     return pwd;
@@ -93,11 +81,13 @@ function checkLength() {
 
 // utility function for getting characters from array
 
+function addCharFromArray(arr) {
+    passwordResult += getRandomFromArray(lowerCaseArray);
+}
+
 function getRandomFromArray(arr) {
     return arr[parseInt(Math.random() * arr.length)];
 };
-
-
 
 // event listener main button
 
