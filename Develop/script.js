@@ -19,15 +19,8 @@ var passwordResult = "";
 
 
 function criteria() {
-    // var passwordResult = "";
-    // var characters = [lChar, spChar, lChar.toUpperCase(), numChar];
-    // for (var i = 0; i < l; i++) {
-    //     passwordResult += characters.charAt(Math.floor(Math.random() * characters.length))
-    // };
-    // check if there are numbers
-    // if (userPN.value > 0) {
-    //     passwordResult += addCharFromArray(numChar)
-    // };
+    var passwordResult = "";
+
 
     // // check if ther are special characters
     // if (userPS.value > 0) {
@@ -49,20 +42,6 @@ function generatePassword() {
 
 
 
-// function password(l, characters) {
-//     var pwd = "";
-//     for (var i = 0; i < l; i++) {
-//         pwd += characters.charAt(Math.floor(Math.random() * characters.length));
-//     };
-//     if (userPU.value > 0) {
-//         {
-//             passwordResult += addCharFromArray(lchar.toUpperCase()).charAt(Math.floor(Math.random() * lChar.toUpperCase().length)) * userPU.value;
-//         };
-//     }
-
-
-//     return pwd;
-// };
 
 // Length checker.. If the length is too long or short, the generate button will be disabled. 
 
@@ -160,6 +139,7 @@ generateBtn.addEventListener("click", function() {
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
     passwordResult = "";
+    alert("Your password is ready!")
 });
 document.getElementById("pwLength").addEventListener("input", checkLength);
 document.getElementById("pwNumber").addEventListener("input", numberDiscrepancy);
