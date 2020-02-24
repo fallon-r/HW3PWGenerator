@@ -46,19 +46,30 @@ function password(l, characters) {
     for (var i = 0; i < l; i++) {
         pwd += characters.charAt(Math.floor(Math.random() * characters.length));
     };
-    if (userPU.value < 1) {
-        alert("Your password is not strong enough.")
-    };
-    if (userPS.value < 1) {
-        alert("Your password is not strong enough.")
-    };
-    if (userPN.value < 1) {
-        alert("Your password is not strong enough.")
-    };
+    // if (userPU.value < 1) {
+    //     alert("Your password is not strong enough.")
+    // };
+    // if (userPS.value < 1) {
+    //     alert("Your password is not strong enough.")
+    // };
+    // if (userPN.value < 1) {
+    //     alert("Your password is not strong enough.")
+    // };
 
 
     return pwd;
 };
+
+// Length checker.. If the length is too long or short, the generate button will be disabled. 
+
+function checkLength() {
+    if (userPL.value >= 8 && userPL.value <= 128) {
+        generateBtn.disabled = false;
+    } else {
+        generateBtn.disabled = true;
+    }
+};
+
 
 // function buildPassword() {
 //     // check for number and proper length of pass
@@ -92,3 +103,4 @@ generateBtn.addEventListener("click", function() {
 
     passwordText.value = password(userPL.value, characters);
 });
+document.getElementById("pwLength").addEventListener("blur", checkLength);
