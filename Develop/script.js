@@ -154,4 +154,8 @@ function numberDiscrepancy() {
         document.querySelector("#generate").innerHTML = "Generate Password"
 
     }
+    if (parseInt(userPS.value) + parseInt(userPU.value) + parseInt(userPN.value) > 128) {
+        generateBtn.disabled = true;
+        document.querySelector("#generate").innerHTML = "the sum of your criteria is >128"
+    }
 };
