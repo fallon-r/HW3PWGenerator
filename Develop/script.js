@@ -7,7 +7,7 @@ var numChar = "1234567890";
 var numCharArray = numChar.split("");
 var spChar = "!@#$%^&*=-_";
 var spCharArray = spChar.split("");
-// var char = [lChar, lChar.toUpperCase(), numChar, spChar];
+var char = [lCharArray, uCharArray, numCharArray, spCharArray];
 
 // Input variables
 var generateBtn = document.querySelector("#generate");
@@ -19,7 +19,9 @@ var userPS = document.getElementById("pwSpecial");
 // Output variable
 var passwordText = document.querySelector("#password");
 var passwordResult = "";
+var rI = "";
 
+console.log(rI);
 // Functions where the magic happens 
 
 
@@ -33,26 +35,32 @@ function generatePassword() {
 
 
 function buildPassword() {
+
     // check for number and proper length of pass
     if (userPL.value >= 8 && userPL.value <= 128) {
         for (var i = 0; i < userPL.value; i++) {
-            addCharFromlArray(lCharArray);
+            addCharFromlArray(char[lCharArray]);
         }
     };
     // other criteria
-    if (userPU.value > 0) {
-        for (var i = 0; i < userPU.value; i++) {
-            addCharFromUArray(lCharArray);
-        }
-    };
+    // if (userPU.value > 0) {
+    //     for (var i = 0; i < userPU.value; i++) {
+    //         var uCrit = passwordResult
+    //         passwordResult - +
+
+    //             uCrit.replace("", addCharFromUArray(lCharArray))
+    //     };
+    // };
     if (userPS.value > 0) {
         for (var i = 0; i < userPS.value; i++) {
-            addCharFromSArray(spCharArray);
+            addCharFromSArray(char[spCharArray]);
         }
     };
     if (userPN.value > 0) {
         for (var i = 0; i < userPN.value; i++) {
+
             addCharFromNArray(numCharArray);
+
         }
     };
     return passwordResult;
@@ -96,12 +104,19 @@ generateBtn.addEventListener("click", function() {
     // alert("Your password is ready!")
 });
 document.getElementById("pwLength").addEventListener("input", checkLength);
+document.getElementById("pwLength").addEventListener("input", randI);
 document.getElementById("pwNumber").addEventListener("input", numberDiscrepancy);
 document.getElementById("pwUppercase").addEventListener("input", numberDiscrepancy);
 document.getElementById("pwSpecial").addEventListener("input", numberDiscrepancy);
 
 
 // Length checker.. If the length is too long or short, the generate button will be disabled. 
+
+function randI() {
+
+    var rI = Math.floor(Math.random() * passwordResult.length);
+    return rI;
+};
 
 function checkLength() {
     if (userPL.value < 8) {
@@ -154,8 +169,8 @@ function numberDiscrepancy() {
         document.querySelector("#generate").innerHTML = "Generate Password"
 
     }
-    if (parseInt(userPS.value) + parseInt(userPU.value) + parseInt(userPN.value) > 128) {
+    if (parseInt(userPS.value) + parseInt(userPU.value) + parseInt(userPN.value) > 128 || parseInt(userPS.value) + parseInt(userPU.value) + parseInt(userPN.value) > userPL.value) {
         generateBtn.disabled = true;
-        document.querySelector("#generate").innerHTML = "the sum of your criteria is >128"
+        document.querySelector("#generate").innerHTML = "the sum of your criteria is >128 or the length"
     }
 };
