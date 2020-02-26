@@ -7,7 +7,7 @@ var numChar = "1234567890";
 var numCharArray = numChar.split("");
 var spChar = "!@#$%^&*=-_";
 var spCharArray = spChar.split("");
-var char = [lCharArray, uCharArray, numCharArray, spCharArray];
+var char = [];
 
 // Input variables
 var generateBtn = document.querySelector("#generate");
@@ -19,9 +19,9 @@ var userPS = document.getElementById("pwSpecial");
 // Output variable
 var passwordText = document.querySelector("#password");
 var passwordResult = "";
-var rI = "";
+// var rI = "";
 
-console.log(rI);
+// console.log(rI);
 // Functions where the magic happens 
 
 
@@ -39,27 +39,25 @@ function buildPassword() {
     // check for number and proper length of pass
     if (userPL.value >= 8 && userPL.value <= 128) {
         for (var i = 0; i < userPL.value; i++) {
-            addCharFromlArray(char[lCharArray]);
+            addCharFromArray(char);
+            char = char.concat(lCharArray);
         }
     };
     // other criteria
-    // if (userPU.value > 0) {
-    //     for (var i = 0; i < userPU.value; i++) {
-    //         var uCrit = passwordResult
-    //         passwordResult - +
+    if (userPU.value > 0) {
+        for (var i = 0; i < userPU.value; i++) {
 
-    //             uCrit.replace("", addCharFromUArray(lCharArray))
-    //     };
-    // };
+            char = char.concat(uCharArray);
+        };
+    };
     if (userPS.value > 0) {
         for (var i = 0; i < userPS.value; i++) {
-            addCharFromSArray(char[spCharArray]);
+            char = char.concat(spCharArray);
         }
     };
     if (userPN.value > 0) {
         for (var i = 0; i < userPN.value; i++) {
-
-            addCharFromNArray(numCharArray);
+            char = char.concat(numCharArray)
 
         }
     };
@@ -70,9 +68,9 @@ function buildPassword() {
 
 
 
-function addCharFromlArray(arr) {
+function addCharFromArray(arr) {
 
-    passwordResult += getRandomFromArray(lCharArray);
+    passwordResult += getRandomFromArray(char);
 
 
 };
@@ -112,11 +110,11 @@ document.getElementById("pwSpecial").addEventListener("input", numberDiscrepancy
 
 // Length checker.. If the length is too long or short, the generate button will be disabled. 
 
-function randI() {
+// function randI() {
 
-    var rI = Math.floor(Math.random() * passwordResult.length);
-    return rI;
-};
+//     var rI = Math.floor(Math.random() * passwordResult.length);
+//     return rI;
+// };
 
 function checkLength() {
     if (userPL.value < 8) {
