@@ -76,19 +76,6 @@ function addCharFromArray(arr) {
 
 };
 
-function addCharFromUArray(arr) {
-    passwordResult += getRandomFromArray(uCharArray);
-};
-
-function addCharFromNArray(arr) {
-    passwordResult += getRandomFromArray(numCharArray);
-};
-
-function addCharFromSArray(arr) {
-    passwordResult += getRandomFromArray(spCharArray);
-
-};
-
 function getRandomFromArray(arr) {
     return arr[parseInt(Math.random() * arr.length)];
 };
@@ -103,7 +90,6 @@ generateBtn.addEventListener("click", function() {
     // alert("Your password is ready!")
 });
 document.getElementById("pwLength").addEventListener("input", checkLength);
-document.getElementById("pwLength").addEventListener("input", randI);
 document.getElementById("pwNumber").addEventListener("input", numberDiscrepancy);
 document.getElementById("pwUppercase").addEventListener("input", numberDiscrepancy);
 document.getElementById("pwSpecial").addEventListener("input", numberDiscrepancy);
@@ -147,18 +133,6 @@ function numberDiscrepancy() {
         userPU.disabled = true;
         userPS.disabled = true;
         document.querySelector("#generate").innerHTML = "You have more numbers than characters!"
-    }
-    if (parseInt(userPU.value) > parseInt(userPL.value)) {
-        generateBtn.disabled = true;
-        userPN.disabled = true;
-        userPS.disabled = true;
-        document.querySelector("#generate").innerHTML = "You have more uppercase letters than characters!"
-    }
-    if (parseInt(userPS.value) > parseInt(userPL.value)) {
-        generateBtn.disabled = true;
-        userPN.disabled = true;
-        userPU.disabled = true;
-        document.querySelector("#generate").innerHTML = "You have more special characters than characters!"
     }
     if (parseInt(userPL.value) >= parseInt(userPN.value) && parseInt(userPL.value) >= parseInt(userPU.value) && parseInt(userPL.value) >= parseInt(userPS.value)) {
         generateBtn.disabled = false;
