@@ -28,14 +28,13 @@ var passwordResult = "";
 
 
 function generatePassword() {
-    // criteria();
     var pass = buildPassword();
     return pass;
 };
 
 
 function buildPassword() {
-
+    // Default for char Array
     char = char.concat(lCharArray);
     // check for number and proper length of pass
     if (userPL.value >= 8 && userPL.value <= 128) {
@@ -96,12 +95,6 @@ document.getElementById("pwSpecial").addEventListener("input", numberDiscrepancy
 
 
 // Length checker.. If the length is too long or short, the generate button will be disabled. 
-
-// function randI() {
-
-//     var rI = Math.floor(Math.random() * passwordResult.length);
-//     return rI;
-// };
 
 function checkLength() {
     if (userPL.value < 8) {
