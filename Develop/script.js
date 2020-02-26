@@ -7,6 +7,7 @@ var numChar = "1234567890";
 var numCharArray = numChar.split("");
 var spChar = "!@#$%^&*=-_";
 var spCharArray = spChar.split("");
+// var rCharAt = JSON.stringify(char).charAt(char([parseInt(Math.random() * char.length)]));
 var char = [];
 
 // Input variables
@@ -37,22 +38,23 @@ function buildPassword() {
     };
     // other criteria
     if (userPU.value > 0) {
-        for (var i = 0; i < userPU.value; i++) {
-            char = char.concat(uCharArray);
-        };
+        char = char.concat(uCharArray);
+        // if (passwordResult.includes(getRandomFromArray(uCharArray)) = )
+        // for (var i = 0; i < userPU.value; i++) {
+        //     char = char.concat(uCharArray);
+        // };
     };
     if (userPS.value > 0) {
-        for (var i = 0; i < userPS.value; i++) {
-            char = char.concat(spCharArray);
-        }
+        char = char.concat(spCharArray);
+        // for (var i = 0; i < userPS.value; i++) {
+        //     char = char.concat(spCharArray);
+        // }
     };
     if (userPN.value > 0) {
-        for (var i = 0; i < userPN.value; i++) {
-            char = char.concat(numCharArray)
-
-        }
+        char = char.concat(numCharArray);
     };
     return passwordResult;
+
 };
 
 // utility function for getting characters from array; shuffling other arrays into lChar
