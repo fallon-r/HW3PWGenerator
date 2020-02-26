@@ -36,11 +36,12 @@ function generatePassword() {
 
 function buildPassword() {
 
+    char = char.concat(lCharArray);
     // check for number and proper length of pass
     if (userPL.value >= 8 && userPL.value <= 128) {
         for (var i = 0; i < userPL.value; i++) {
             addCharFromArray(char);
-            char = char.concat(lCharArray);
+
         }
     };
     // other criteria
