@@ -19,19 +19,11 @@ var userPS = document.getElementById("pwSpecial");
 // Output variable
 var passwordText = document.querySelector("#password");
 var passwordResult = "";
-// var rI = "";
-
-// console.log(rI);
-// Functions where the magic happens 
-
-
-
 
 function generatePassword() {
     var pass = buildPassword();
     return pass;
 };
-
 
 function buildPassword() {
     // Default for char Array
@@ -46,7 +38,6 @@ function buildPassword() {
     // other criteria
     if (userPU.value > 0) {
         for (var i = 0; i < userPU.value; i++) {
-
             char = char.concat(uCharArray);
         };
     };
@@ -65,8 +56,6 @@ function buildPassword() {
 };
 
 // utility function for getting characters from array; shuffling other arrays into lChar
-
-
 
 function addCharFromArray(arr) {
 
