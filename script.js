@@ -10,6 +10,7 @@ var spCharArray = spChar.split("");
 // var rCharAt = JSON.stringify(char).charAt(char([parseInt(Math.random() * char.length)]));
 var char = [];
 
+
 // Input variables
 var generateBtn = document.querySelector("#generate");
 var userPL = document.getElementById('pwLength');
@@ -39,9 +40,11 @@ function buildPassword() {
     // other criteria
     if (userPU.value > 0) {
         char = char.concat(uCharArray);
-        // if (passwordResult.includes(getRandomFromArray(uCharArray)) = )
-        // for (var i = 0; i < userPU.value; i++) {
-        //     char = char.concat(uCharArray);
+        // for (var i = 0; i < (userPU.value); i++) {
+        //     if (char.includes(uCharArray = false)) {
+        //         char.replace("q", "Q");
+        //         console.log("Hurray");
+        //     };
         // };
     };
     if (userPS.value > 0) {
