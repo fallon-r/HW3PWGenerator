@@ -1,11 +1,10 @@
 // character types
 var lChar = "abcdefghijklmnopqrstuvwxyz";
-var lCharArray = lChar.split("");
-var uCharArray = lChar.toUpperCase().split("");
+var uChar = lChar.toUpperCase();
 var numChar = "1234567890";
-var numCharArray = numChar.split("");
 var spChar = "!@#$%^&*=-_";
-var spCharArray = spChar.split("");
+
+// GLOBAL CHARACTER SET 
 var char = [];
 
 // Input variables
@@ -19,54 +18,45 @@ var userPS = document.getElementById("pwSpecial");
 var passwordText = document.querySelector("#password");
 var passwordResult = "";
 
-function generatePassword() {
-    var pass = buildPassword();
-    return pass;
-};
+// Main functions
 
-function buildPassword() {
-    // Default for char Array
-    char = char.concat(lCharArray);
-    // base password maker
-    for (var i = 0; i < userPL.value; i++) {
-        addCharFromArray(char);
+function generator() {
+    passwordResult = "";
+    char = "";
+    if (userPL.value >= 8 && userPL.value <= 128) {
+        char += lChar;
     };
-    // addition of special char criterion
+    if (userPU.checked) {
+        char += (uChar);
+    };
+    if (userPN.checked) {
+        char += numChar;
+    };
+    if (userPS.checked) {
+        char += spChar;
+    };
+    for (var i = 0; i < userPL.value; i++) {
+        passwordResult += char.charAt(
+            Math.floor(Math.random() * char.length)
+        );
+    };
     return passwordResult;
-};
-
-// utility function for getting characters from array; shuffling other arrays into lChar
-
-function addCharFromArray(arr) {
-
-    passwordResult += getRandomFromArray(char);
+}
 
 
-};
-
-function getRandomFromArray(arr) {
-    return arr[parseInt(Math.random() * arr.length)];
-};
 
 // event listener main button
 
 generateBtn.addEventListener("click", function() {
-    var password = generatePassword();
+    var password = generator();
     var passwordText = document.querySelector("#password");
-    passwordText.value = password;
+    passwordText.value = passwordResult;
     passwordResult = "";
-    if (userPN.checked == true) {
-        console.log("something")
-    };
 
     alert("Your password is ready!")
 });
+
 document.getElementById("pwLength").addEventListener("input", checkLength);
-// document.getElementById("pwNumber").addEventListener("checked", function() {
-//     char.concat(numCharArray);
-// });
-
-
 
 // Length checker.. If the length is too long or short, the generate button will be disabled. 
 
