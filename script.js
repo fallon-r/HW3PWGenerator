@@ -32,21 +32,7 @@ function buildPassword() {
         addCharFromArray(char);
     };
     // addition of special char criterion
-    if (userPN.checked == true) {
-        char += numCharArray;
-        console.log("Btn + check works");
-    };
-    if (userPN.checked == true) {
-        char += spCharArray;
-        console.log("Btn + check works");
-    };
-    if (userPN.checked == true) {
-        char += uCharArray;
-        console.log("Btn + check works");
-    };
-
     return passwordResult;
-
 };
 
 // utility function for getting characters from array; shuffling other arrays into lChar
@@ -68,14 +54,17 @@ generateBtn.addEventListener("click", function() {
     var password = generatePassword();
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
-
-
-
-
     passwordResult = "";
-    // alert("Your password is ready!")
+    if (userPN.checked == true) {
+        console.log("something")
+    };
+
+    alert("Your password is ready!")
 });
 document.getElementById("pwLength").addEventListener("input", checkLength);
+// document.getElementById("pwNumber").addEventListener("checked", function() {
+//     char.concat(numCharArray);
+// });
 
 
 
