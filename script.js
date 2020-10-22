@@ -58,7 +58,7 @@ generateBtn.addEventListener("click", function() {
 
 document.getElementById("pwLength").addEventListener("input", checkLength);
 
-// Length checker.. If the length is too long or short, the generate button will be disabled. 
+// Length checker. If the length is too long or short, the generate button will be disabled. 
 
 function checkLength() {
     if (userPL.value < 8) {
